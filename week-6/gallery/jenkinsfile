@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Start') {
             steps {
+                
                 echo 'The build has started'
             }
         }
