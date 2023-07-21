@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy to Render') {
             steps {
                 sh '''
-                   curl -X GET https://gallery-xp0b.onrender.com
+                   curl -X GET https://my-week-6.onrender.com
                    '''
             }
         }
