@@ -21,6 +21,11 @@ pipeline {
                    '''
             }
         }
+        stage('run tests'){
+            steps{
+               sh 'npm test'
+            }
+        }
         stage('Deploy to Render') {
             steps {
                 sh '''
