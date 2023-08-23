@@ -6,7 +6,7 @@ By John Waigwa
 This project is about demonstrating the knowledge of Robotic process automation by automating a real work task
 
 ## PROJECT URL
-The link to access the project on the git is : https://github.com/AlbertNjaneKimani/rpa-ip
+The link to access the project on the git is : https://github.com/Kimiti-Github/Devop_Moringa_1/tree/main/week-11/rpa-ip/Requests
 
 ## KNOWN BUGS
 At the moment there are no known bugs at the momment.
