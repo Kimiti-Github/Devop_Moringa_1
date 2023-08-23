@@ -1,0 +1,633 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SaaSAutomation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Name" Type="InArgument(x:String)" />
+    <x:Property Name="Email" Type="InArgument(x:String)" />
+    <x:Property Name="Subject" Type="InArgument(x:String)" />
+    <x:Property Name="Successful" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>761,2083</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SaaSAutomation_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SaaSAutomation" sap:VirtualizedContainerService.HintSize="514,2018" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,1439" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Moringa-saf" sap:VirtualizedContainerService.HintSize="434,1234" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="83f49c14-1731-42a9-b7f6-e580a06a725c" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1018" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick ClickType="Single" DisplayName="Click 'A addModuleButton'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="83f49c14-1731-42a9-b7f6-e580a06a725c" Version="V1">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases" DesignTimeRectangle="1184, 193, 38, 49" FriendlyName="'A addModuleButton'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='addModuleButton' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='addModuleButton' type='' tag='A' class='' aaname='  ' /&gt;" Guid="7ed515ff-7921-48d3-a8f3-43acb0856064" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACoAAAA1CAYAAAA3Q3kVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADoSURBVGhD7dKhCsJQFMbx8yRGwSgGk3afxKKgYcHgIxhsRsHkS4jBZ1jQTXQwWFq5acUjW1NOGN4jeNw3+JV92+UfLj04ZgsoTVO2gFrtHluAUG0I1YZQbQjVhlBtCNWGUG3NDT0cTxVp86Eeer7EFWnzgVBp8/H/oZ3ugMfTgGfB8sX1dq+8v5/MF9wfjsSz6vg4dLXecFEUXPcpvy3/kc6qA3dU2nwgVNp8NDd0u9tXpM2Heui3IFQbQrUhVBtCtSFUG0K1IVSbndAwDNkCiqKILaAkSdgCyrKMLaA8z9kCcs7x73P8BJTt/8Y1QniHAAAAAElFTkSuQmCC" InformativeScreenshot="393b75c2bf90b740d29e2bc2a6fc756a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Moringa-saf' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Double" DisplayName="Type Into 'Contact Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="83f49c14-1731-42a9-b7f6-e580a06a725c" Text="Name" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases/new" DesignTimeRectangle="68, 380, 260, 28" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl parentid='middle_container' tableRow='1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl parentid='middle_container' class='  zd-textbox-container zd-textbox-basic zd-textbox-varClass zd-textbox-xmedium  zd-textbox-primary zd5b39172845  zd-textbox-effect  zd-textbox-borderColor_default ' tag='INPUT' type='text' aaname='' /&gt;" Guid="6389fddd-9a82-4e4e-b92c-7449dfec2cd5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAgCAYAAADufuYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACASURBVHhe7dZBCQAxEATB8+9zdWwgkPu1gyoYC818CxAEAkgCASSBAJJAAEkggCQQQBIIIAkEkAQCSAIBJIEAkkAASSCAJBBAEgggCQSQBAJIAgEkgQCSQABJIIAkEEASCCAJBJAEAkgCASSBAJJAAOkPxMyYmd09HgSQBAIIuwdHrTR2vmHp2gAAAABJRU5ErkJggg==" InformativeScreenshot="1bd389ee8dba9fc092c6cc2caa38e400.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Moringa-saf' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="68, 357, 260, 18" ElementType="Text" FriendlyName="'Contact Name'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='LABEL' class='zd-label-label zd-label-varClass zd-label-title zd-label-medium zd-labelcolors-mandatory zd-label-font_default&amp;#xA;           zd-label-cursor  ' aaname='Contact Name' check:innerText='Contact Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAWCAYAAAA8XQKgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVjSURBVHhe7ZrBaxtHFIf7T+lksMFgMBiSk042hvjUnGQEDTkYTAmB1BcrOYRA2wRSG1I3tJYhIGjIobgQ6kKIStOYml1JlWTJWkWxbNlae+Vf35udlXalXbWxL3H7Pljw7IyeZsHv2zcz+gSCIAgRiCAEQYhEBCEIQiQiCEEQIokWhGOj3WjCdnRbEIT/HQOC6FhbKC3OwYjF9DUCI/kQVlUPuCAd6y3elW3duhiH21k0h4V6lYIRT6He0m0fBxvzMO5ldUsQhDACguiU08iPjcC8nUaj1oZzdobTVhHW4xvIPXiNEz3uInBi5jYs3boIFiqJeVSGiYsFwZJLrqPZVwl5gjijZxQEIRyfIJqo3qRkurOJY0qa/sTpbzutJo5oCXIyZAliU/9R39u7/mAkVBAd243XDqsI9HInGCuL4tg8ditDEpwFMTuPfHwE+Y0iOvo2EyYINd+GjahH4n7/kovbofMlwp5dEC4bPUFYGeRjMygbg3II4JRQvT0DY2oG5mwcxtgMCs9L3eSr34shv5rGX9fi1E/jqCLJPTWp38Le4qRv6RJzReFYsL66DmOCx7vxiq96WXf4cwq5iXEVy4xPUnWTwf7uCxSmaOnTjRVRSbAgEmk0S+vIj8YDcf2CaO+kUZgehzFN38Fxb2a6FQePM5dXUEpS3zTNf+IW9gokJ/V8NN/YOPLPes/f3llDformyfPl8b5YgnDZ6AlCleNL2GsPkQPReESJsbyFo1NXJI5OvtK228+CMJJreN/S/X9+AzO2gOq+G9e6y2KoqT5XRCSITLYb73jzCxhXvkaDBzdYWnPY3XErGL4OSjW19FEVRCyhKoherD60IA6or8lCGF3AngocFMTJ9gvUCvo7Tg2Ur8VQ+HG/Ny6x0n2e90/mKE4ClbI7/ngrBXP0Puo82KY5XXFFpGLx+NU55L4rqliCcNn4QEFwWT+CYjaYkNZyDOajP9TfLAhPAC6cyL2lwGB/H9U0crEULOo/fEbJmczgMHRsMG4oPkFQ9tJ30xtf70eELTE8vDkyA+M45qcUw2ur+ep5cN/kLey+/AXWyy33Wr1Bc1jHgTtaEC4VfUuMqyj9PpgwPcKTUlUNd1+rJPInl0u4IPwcmZsoLV7vleVaEMOS+MMFQTimqg5Mmut7f2xa5tQ3Usjz9/M18Q+C8Mf0CeLo+QKM2RQqfkHQVcsWYYc+gyB83IRuUrb1nUEoKbmCeOX/Z7dRu0NJ98Q4lyBOfrsPM05CoNKfP39WWQ9WEP5kDHAOQRDqpGb0KnKJGS21GqrJceR/MNWGK8/BWwYxHyIIbD+EeeUh6rRcEoT/Aj5BeMlDyf75OhpVdzffaZVQf3qL3uy0Dqc270Fwmb6vN96cwholyBzKBXfZ8W8EwTLhkwlOSJWAJCXvDXv40xJMLQg0XqAwRmv6rX13E9Bp4l1mU2/6cVx3U7VjR5w8hAiCadN9kzc3lSBed+MoWiZ2E+cUhPMWJT4x+b7Ync9JmSqIN8N+rCEIHy8BQTBOdQvFz0gC3ROCceQWV2BZ7tuVy/Hal9fVfTM+DmNqHsVfLb1xGLaECAqim5x69x9VkoB3gjB7g2JlqErRguDxb1aQ55OFOL3xJyaRf5zFkco+vafAsSbmUS2o4UEiBKE++4A+qwTRRmPVO0WZQe5OGrVv+bca5xAEwT80Kyb5tIPi8byvLaGyI4IQLicDgvDghLBb7o+l+O9ugmi8e1F9/QTuUYKf6lMLD7sdjNUfw+vrv+9QHG+OUUT1+eOdnbZh6zn573ucp+2/BOEyEikIQRAEEYQgCJGIIARBiEQEIQhCJCIIQRAiEUEIghAB8Dcy9P+6fdKqlwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Double" DisplayName="Type Into 'Email'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="83f49c14-1731-42a9-b7f6-e580a06a725c" Text="Email" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases/new" DesignTimeRectangle="68, 510, 260, 28" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl idx='3' parentid='middle_container' tableRow='1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='' parentid='middle_container' class='  zd-textbox-container zd-textbox-basic zd-textbox-varClass zd-textbox-xmedium  zd-textbox-primary zd5b39172845  zd-textbox-effect  zd-textbox-borderColor_default ' tag='INPUT' type='text' /&gt;" Guid="f823f97a-efdf-4399-8995-e69c4f41f3ac" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAgCAYAAADufuYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACASURBVHhe7dZBCQAxEATB8+9zdWwgkPu1gyoYC818CxAEAkgCASSBAJJAAEkggCQQQBIIIAkEkAQCSAIBJIEAkkAASSCAJBBAEgggCQSQBAJIAgEkgQCSQABJIIAkEEASCCAJBJAEAkgCASSBAJJAAOkPxMyYmd09HgSQBAIIuwdHrTR2vmHp2gAAAABJRU5ErkJggg==" InformativeScreenshot="be9499c30d7c4dd9ffa5bc1729a09acb.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Moringa-saf' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="68, 487, 260, 18" ElementType="Text" FriendlyName="'Email'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname='Email' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Email' type='' tag='LABEL' class='zd-label-label zd-label-varClass zd-label-title zd-label-medium zd-labelcolors-default zd-label-font_default&amp;#xA;           zd-label-cursor  ' check:innerText='Email' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQgAAAAWCAYAAAA8XQKgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIuSURBVHhe7do/a9tAAIZxfQyvBi+FLN2q0YIOySjoYvAQTKeMJkMJGZJ6aeOpDRnq0KFEgQY8FOrNyZBgdaqztVCICwlEmwQJWNCC3t7pT2L3fAVTl0rw/uBApzvbkx5ysQ0QEWkwEESkxUAQkRYDQURa/ycQYYAgzK49DE+G8LI5EeXGVCDcbQOGoQ770Et3LIKHbl28b70rroQrB7Zhw7mKF4koR9RAbA0QRZEyFik420fn1E/eNw3EweViP4OI/p42EH8kjwh3ZwTh9/mEMNCvxRgIotyaIxAuWkYD7bdNrFQtmJUSrFdDjI4aMB9ZsJZKKFVbcG+T3eFXB81qGQ/EXrlWXu1ilCwln7PtJhMGgii31EAsr2HnxQ7aL9vx2P8UZKsiEA/R7CVHg+imj6aIhLk5gPz7IIoucPDEQO39dbw7PO+h913el0eUC3SWDax98OO1qRAxEES5pQbi6Wv0j/t34/PlOFsVgZh8kD04Iggbp/f/o8ge/Fnkmu0k8WAgiIphziOGGojn7v3eqdf/9OAettB4LI4YYpgVBoKoaP5RIK7RrZdRezdKjx8RBlsMBFHRqIF49hG+7yOIv31IR/wlxDyBGIi9Fjrf0rXbL9gVexkIomJRA6H9odQ8gRhjuGejXDHj44W97uD4TY2BICqYqUBI8qGdNTKT19KseXYv+jHGOJ1P3pdmzYkoX5RAEBFlGAgi0mIgiEiLgSAiLQaCiLQYCCLSAH4Bd9lniWtyk1QAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Double" DisplayName="Type Into 'Subject'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="83f49c14-1731-42a9-b7f6-e580a06a725c" Text="Subject" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases/new" DesignTimeRectangle="68, 504, 734, 28" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;section&amp;gt;article&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;input' parentid='middle_container' tableRow='1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='  zd-textbox-container zd-textbox-basic zd-textbox-varClass zd-textbox-xmedium  zd-textbox-primary zd5b39172845 zd-textbox-border zd-textbox-effect  zd-textbox-borderColor_default ' parentid='middle_container' aaname='' tag='INPUT' type='text' /&gt;" Guid="d671e9c7-d3b9-4825-9346-0d0237bdcaf6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAuIAAAAgCAYAAABXXB2pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAT1SURBVHhe7dxfSBsHAMfxe7oX3/JSZDDwQcE9FYQKQ9aHdSs4GB3iXsbAwhxSKA4KG8JmGRtkOLYOhMEeCsqEOSxbnVApMrdarG1FZ6NTF/970+iDPggqIvrbXXKNlyyzRy+dSfr9wA+a5C4p1YMvR6ghAADgy+HhoQ4ODrS/v6+9vT3t7u5qe3tbW1tb2tzc1Pr6ulZWVrS4uKi5uTkVfxhRLBZL2erqanLOsc4sy9Ly8rKWlpbi587Pz2t2dlaRSEQ7OztPPV29kJz37wDg5HivRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCHEAQXmvRUIcAACfCiXENzY2GGMnNO+1SIgDAOBToYQ4Yyw3RogDAOATIc4Yy+YIcQAAfCLEGWPZHCEOAIBPhDhjLJsjxAEA8IkQZ4xlc4Q4AAA+EeKMsWyOEAcAwCdCnDGWzRHiAAD4RIgzxrI5QhwAAJ8I8dza+MQUY3k37+8wIQ4AgE+EeG7NiZrZuQX738zS3yurjOXsnN9R53eVEAcA4CkR4rk1J2qm/5pxfzpAbuOOOAAAARDiubVEiM+6Px0gtxHiAAAEQIjn1ghx5BNCHACAAAjx3BohjnxCiAMAEAAhnlsjxJFPCHEAAAIo9BCf7A2rpjwk0zBkmCGVf3wr43G5MkIc+YQQBwAggIIO8ZFWnTNNVTZ16/7YmMbutKv+067Mx2Zr/V/r9fJX1TKY4TUf+88Q3xrS5+df0cvfjLpPuNZuqOHyL7Lch8D/iRAHACCAgg7xzjoZxhv6bjLDa89q8c+sUPhZhHjNRVWff1tfeVucEMcJIsQBAAigoEM82qX6YkNFpxvUPrSQ8tqjrsuqOlVkR7Mho6hUNa0DsmI9agwZKmvud4+Lqq3WlFnbpmjM0nBHg86ETPscU6EzV3QjYqW8ZyLC7fdzVxEetJ+fVG+4RqVFieeKSmsU7p1MPc+z40P8I33ffU3V3vAmxHGCjg3xP+dijDHGGDtmE7OrGp9ZUSRqaWx6WaOTixqZmNfDyIyGRqd19+G4frv3h/oGhnX79/t59x1xa7hDDaed4Db14putGrASz0fv/qo7U06cW3rw5VkZZr267Of7m8tklDWr3zk/2qZaM6RLNy1ZPY0qLq5ThxPfVkTt74TcQE/9vPQ74oMtlTLNSn12e0oLC6PqbnIe16otmnaeuyeF+E/Wmn54r1rv/+ymtzfE3a+vvFCeWPJrLJ6Ir3Jeq3z8Pu6xr32r5E32lPdIu/sOpDk2xAEAwPGej/81ZUGj3WFVFxvJeHYC/ZO3qlRSckpF8TvYdep0ju1vVpkb0pYd1Wbokm7a8d5V79wJP7rbHV9FWIMpn2MvJcQfqKXSUKix5+j16HVdsM+t63Qfp+3JIW7/2Y7vd+Mxnfhzxjvi3uPduH7JPW7txw88ke0Je+858Zfsz/FGOpCGEAcAIIDnI8QTi16/YEeyE9y3dMWO8oqrfZpx7pDH49kN8diIrp11vlYyoM46M/k1lXiIn2vVI8/7ZVyGEC9p6jt6PR7ipuq73Mdp8xXiNiem43e800I8Edlpd7TTzt265/16y5aGvriYCHEnvJPnunsc/EAG/w7xmP4BAP8wUAEIrz4AAAAASUVORK5CYII=" InformativeScreenshot="c9da86b5d9f9ffe5c1b2783d75bcd148.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Moringa-saf' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target DesignTimeRectangle="68, 481, 46, 18" ElementType="Text" FriendlyName="'Subject'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname='Subject' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Subject' type='' tag='LABEL' class='zd-label-label zd-label-varClass zd-label-title zd-label-medium zd-labelcolors-mandatory zd-label-font_default&amp;#xA;           zd-label-cursor  ' check:innerText='Subject' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADIAAAAWCAYAAACCAs+RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANdSURBVFhH7VXPSxtREO4/lZNgQAgIgj3tqSJEKLRQSPDUg/RSCran1EMRqi1YvVgpGpAGWnIoKYgphKZUUpBsku6apFlNsiYhPzb5Ou/tpvuyiTaKiogfPLLzZjJvvpl58+7ghuCWyHXDzSZiVHXUqpYwJKr7URwdNCypH01dR9OwhEtAD5G2FoHiHUPS5TLXhB/q3snBiThccCEV1CzJAS2ENPlLb5+gPwMqv+LQB4QkEFGR9VIwawnUWh10WnXoO8tQwmVLfzpMIgVLcsDQoG2so1DoWBvnhYacz49c3hIF2ER41vzI5ohE5+wHikQaxeFas90gO7Id2HJGA/U+P3EobjNGJ4SKMCMK5vV3VAc4Pg76kVyIWxID2VO7KDFT4kTWPkJ9JEGenkLSPQJ5MY461/basgoVFmaodae4rUy/Sszul8rXAFKeMVMnjUN+FkI5G0ZmYsRue0q6WJmeO1KPvSEHZDQ6jvQ8tYKso23pukTsanWDM2VGJDm7jlLVrKihbiLlugv1J9P32nJfs1vQWQsz23IEGc9zaIxLkXXGDLL74Dq2jtUCDH4u8+P71zVsddFDhINKqsc2oTyhjLlGkA6qnMwwRFhr2Xodf+a67Sbasj6n/cUwCju70HaitEL4PW3qK9uMZAgVIUgbzM9/W6sf+gcfkpPLKNL3sERE8L33Cn2JtgmokzTB1nYFIuYqHVH2+84RcU4i7W8Bkwg5PTsRFbkHLmQ+sakn2pqVSofKA4PlFfFt4fi8RJqxAOT7r6DRo8ZaySgmkJ2lC/s2wfuz9nkOSe8qStTXDLUfdJ8cROT5CCrWoKhREmT3HPKUZSfpKvMlBaDpXKTDdBS/RKGz/xbpUrslKNGyeT9JdxSKmDruZwoHyQ5NvAbEmWRXhM36JcrGaHcqjCG1FEXFupB0e5F/TI8lDQJZkpDeiBBRR0VevkPGS1NLIjvPQ/6YmlnvJUIDGqXgCxosNIXuSTThaLiws6zI6nurSLMJJdH085BuJY4a1zXoHLJn8Xn8yGe4OUdfa7GDW/U6rwL7dpbfIF1L0Il6ca9X5yRiY7C9iZP2DUpuN74uTr0jF4HmQRwaZV92P0W+3E/konD5ROQw1JUtHNLj5czsReLSiVwVbolcN9wQIsBfV2tJ6a7qh8wAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="d556d428cf820807eb74ec55c36418a3.png" Selector="&lt;html app='chrome.exe' title='Moringa-saf' /&gt;" Url="https://desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+      </TryCatch.Try>
+    </TryCatch>
+    <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="aacfab85-e378-45a7-933a-8a67cb0b0053" DisplayName="CV Screen Scope" sap:VirtualizedContainerService.HintSize="472,447" sap2010:WorkflowViewState.IdRef="CVScope_1" Version="V5">
+      <p:CVScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '+' (1186,154,16,15)&quot; +&#xD;&#xA;&quot;Anchor: Text 'Moringa-saf' (1031,155,77,16)&quot;]" DesignTimeCacheId="aacfab85-e378-45a7-933a-8a67cb0b0053" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_1" InformativeScreenshot="a78111af432959011f739368085df5bb" KeyModifiers="None" MouseButton="BTN_LEFT" Version="V5">
+              <p:CvClickWithDescriptor.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </p:CvClickWithDescriptor.CursorPosition>
+              <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                <uc:CvDescriptor Id="9acf441e-8d92-4aae-8717-9116b56b43b5">
+                  <uc:CvDescriptor.Anchors>
+                    <x:Array Type="uc:CvElementDescriptor">
+                      <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="1031, 155, 77, 16" ElementType="Text" Text="Moringa-saf" />
+                    </x:Array>
+                  </uc:CvDescriptor.Anchors>
+                  <uc:CvDescriptor.Target>
+                    <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="1186, 154, 16, 15" ElementType="Text" Text="+" />
+                  </uc:CvDescriptor.Target>
+                </uc:CvDescriptor>
+              </p:CvClickWithDescriptor.DesignTimeDescriptor>
+              <p:CvClickWithDescriptor.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="43812447-5cdf-483a-8088-cfef0f430520">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </p:CvClickWithDescriptor.Target>
+            </p:CvClickWithDescriptor>
+          </Sequence>
+        </ActivityAction>
+      </p:CVScope.Body>
+      <p:CVScope.DesignTimeCacheContainer>
+        <uc:CvCacheContainer>
+          <uc:CvCacheContainer.Caches>
+            <scg:List x:TypeArguments="uc:CVCache" Capacity="4">
+              <uc:CVCache DisplayName="1" Id="aacfab85-e378-45a7-933a-8a67cb0b0053" InformativeScreenshot="4888f376992a519099da8b6a3383b706" LogicalPosition="0, 0" OcrText="Moringa-saf X Thursday: RPA Implementation S X + v _ X 'desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases C 0 Home Patrick We... Meet - upj-boym-toy Guides Node.js w jQuery Event Meth... MongoDB comman... Dashboard Canvas Using Node.js &amp; Ex... What is Docker Co... Gmail &gt;&gt; WhatsApp, Telegram, LINE and WeChat integrations are in private beta. Request for early access. X TICKETS KB CUSTOMERS ANALYTICS ACTIVITIES COMMUNITY SOCIAL CHAT Moringa-saf + 0O All Tickets - 01 ... 00 HQ #101 Here's your first ticket. Open CM Lawrence . Zoho . ©s 1 day ago - © Tomorrow 03:36 AM . 1 Feeds Views 08 Agent Queue D&amp;, Teams Queue Tickets received in all days Total Records 1 - 1 Here is your Smart Chat (Ctrl+Space) E: L Chats Contacts" Position="0, 0" ScreenshotGuid="a0933cf1-76e6-46c2-9fec-cf22eb5a249f" ServerVersion="1">
+                <uc:CVCache.CvAnchorRelations>
+                  <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                </uc:CVCache.CvAnchorRelations>
+                <uc:CVCache.CvUiElements>
+                  <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="128">
+                    <uc:CvElementInfo Category="Button" Region="6, 0, 244, 35" />
+                    <uc:CvElementInfo Category="Icon" Region="106, 41, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1236, 41, 23, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="42, 40, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1166, 42, 20, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="75, 40, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1029, 75, 21, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="742, 73, 20, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1134, 42, 21, 20" />
+                    <uc:CvElementInfo Category="InputBox" Region="139, 37, 1060, 29" />
+                    <uc:CvElementInfo Category="Icon" Region="498, 6, 21, 21" />
+                    <uc:CvElementInfo Category="ArrowButton" Region="1334, 76, 17, 15" />
+                    <uc:CvElementInfo Category="Icon" Region="588, 73, 21, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="161, 74, 21, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="10, 40, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="257, 6, 21, 21" />
+                    <uc:CvElementInfo Category="CloseButton" Region="1333, 4, 20, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="18, 6, 20, 21" />
+                    <uc:CvElementInfo Category="MaximizeButton" Region="1287, 4, 19, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="23, 371, 22, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="878, 72, 25, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1312, 705, 19, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="150, 43, 14, 17" />
+                    <uc:CvElementInfo Category="Button" Region="248, 0, 239, 32" />
+                    <uc:CvElementInfo Category="Icon" Region="1229, 151, 22, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1205, 41, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1272, 150, 23, 23" />
+                    <uc:CvElementInfo Category="CloseButton" Region="222, 7, 18, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="1270, 42, 20, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="1137, 271, 20, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="212, 205, 24, 23" />
+                    <uc:CvElementInfo Category="Icon" Region="1178, 259, 47, 43" />
+                    <uc:CvElementInfo Category="Icon" Region="11, 73, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1312, 143, 45, 40" />
+                    <uc:CvElementInfo Category="Icon" Region="1342, 704, 21, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="1178, 75, 19, 17" />
+                    <uc:CvElementInfo Category="Icon" Region="213, 258, 48, 46" />
+                    <uc:CvElementInfo Category="Icon" Region="1139, 152, 20, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="314, 73, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1225, 705, 23, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1192, 206, 31, 18" />
+                    <uc:CvElementInfo Category="CloseButton" Region="462, 7, 18, 18" />
+                    <uc:CvElementInfo Category="ArrowButton" Region="1195, 5, 19, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="1337, 41, 15, 22" />
+                    <uc:CvElementInfo Category="ArrowButton" Region="355, 208, 19, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="1171, 706, 28, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="1184, 152, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1273, 705, 21, 21" />
+                    <uc:CvElementInfo Category="MinimizeButton" Region="1241, 6, 21, 16" />
+                    <uc:CvElementInfo Category="Icon" Region="439, 74, 22, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="21, 542, 25, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="52, 703, 20, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="187, 703, 18, 16" />
+                    <uc:CvElementInfo Category="Icon" Region="23, 451, 23, 23" />
+                    <uc:CvElementInfo Category="CloseButton" Region="1335, 108, 27, 27" />
+                    <uc:CvElementInfo Category="Button" Region="3, 353, 67, 70" />
+                    <uc:CvElementInfo Category="Icon" Region="22, 292, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1298, 39, 28, 26" />
+                    <uc:CvElementInfo Category="Icon" Region="24, 211, 21, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="1080, 203, 25, 23" />
+                    <uc:CvElementInfo Category="Icon" Region="600, 281, 20, 19" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1077, 201, 30, 27" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1160, 701, 53, 27" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1261, 699, 47, 29" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1214, 701, 47, 27" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1308, 699, 30, 29" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="3, 139, 90, 46" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="254, 698, 952, 30" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1298, 38, 27, 26" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1111, 205, 18, 19" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1330, 102, 36, 38" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="475, 287, 13, 13" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="439, 74, 22, 19" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1337, 109, 23, 24" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="24, 652, 29, 22" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="4, 628, 68, 69" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1338, 700, 28, 28" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1334, 77, 16, 14" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="330, 206, 23, 20" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1105, 202, 39, 27" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="443, 7, 17, 19" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="105, 155, 21, 17" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="3, 518, 65, 108" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="3, 427, 67, 100" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="339, 103, 1013, 36" />
+                    <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="589, 74, 19, 20" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1183, 260, 41, 43" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="5, 1, 253, 34" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="108, 141, 148, 43" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="213, 78, 12, 12" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="11, 73, 21, 21" />
+                    <uc:CvElementInfo Category="CloseButton" Confidence="Runtime" Region="1298, 38, 27, 25" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="49, 701, 27, 27" />
+                    <uc:CvElementInfo Category="CloseButton" Confidence="Runtime" Region="257, 6, 20, 21" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="27, 654, 26, 18" />
+                    <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="315, 74, 19, 20" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1194, 6, 20, 17" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="156, 241, 913, 73" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="581, 242, 467, 75" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1008, 241, 221, 74" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="791, 243, 303, 74" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1172, 245, 61, 72" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1056, 259, 95, 61" />
+                    <uc:CvElementInfo Category="InputBox" Region="1106, 202, 51, 26" />
+                    <uc:CvElementInfo Category="ArrowButton" Region="1135, 202, 21, 24" />
+                  </scg:List>
+                </uc:CVCache.CvUiElements>
+                <uc:CVCache.OcrTexts>
+                  <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="128">
+                    <uc:OcrTextInfo Region="43, 10, 67, 15" Text="Moringa-saf" />
+                    <uc:OcrTextInfo Region="226, 11, 11, 11" Text="X" />
+                    <uc:OcrTextInfo Region="281, 10, 53, 15" Text="Thursday:" />
+                    <uc:OcrTextInfo Region="336, 10, 22, 12" Text="RPA" />
+                    <uc:OcrTextInfo Region="360, 10, 85, 14" Text="Implementation" />
+                    <uc:OcrTextInfo Region="447, 10, 9, 11" Text="S" />
+                    <uc:OcrTextInfo Region="464, 11, 11, 11" Text="X" />
+                    <uc:OcrTextInfo Region="501, 9, 14, 14" Text="+" />
+                    <uc:OcrTextInfo Region="1198, 8, 13, 10" Text="v" />
+                    <uc:OcrTextInfo Region="1243, 4, 15, 13" Text="_" />
+                    <uc:OcrTextInfo Region="1336, 7, 13, 13" Text="X" />
+                    <uc:OcrTextInfo Region="161, 45, 403, 16" Text="'desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases" />
+                    <uc:OcrTextInfo Region="1307, 46, 9, 11" Text="C" />
+                    <uc:OcrTextInfo Region="18, 77, 7, 9" Text="0" />
+                    <uc:OcrTextInfo Region="37, 77, 34, 13" Text="Home" />
+                    <uc:OcrTextInfo Region="78, 77, 41, 12" Text="Patrick" />
+                    <uc:OcrTextInfo Region="120, 77, 27, 12" Text="We..." />
+                    <uc:OcrTextInfo Region="187, 77, 29, 12" Text="Meet" />
+                    <uc:OcrTextInfo Region="218, 79, 6, 10" Text="-" />
+                    <uc:OcrTextInfo Region="226, 77, 75, 15" Text="upj-boym-toy" />
+                    <uc:OcrTextInfo Region="340, 77, 39, 13" Text="Guides" />
+                    <uc:OcrTextInfo Region="386, 77, 41, 15" Text="Node.js" />
+                    <uc:OcrTextInfo Region="442, 77, 18, 13" Text="w" />
+                    <uc:OcrTextInfo Region="465, 77, 38, 15" Text="jQuery" />
+                    <uc:OcrTextInfo Region="504, 78, 31, 11" Text="Event" />
+                    <uc:OcrTextInfo Region="537, 77, 37, 12" Text="Meth..." />
+                    <uc:OcrTextInfo Region="614, 77, 54, 15" Text="MongoDB" />
+                    <uc:OcrTextInfo Region="672, 79, 55, 10" Text="comman..." />
+                    <uc:OcrTextInfo Region="767, 77, 59, 12" Text="Dashboard" />
+                    <uc:OcrTextInfo Region="828, 77, 39, 13" Text="Canvas" />
+                    <uc:OcrTextInfo Region="906, 77, 31, 15" Text="Using" />
+                    <uc:OcrTextInfo Region="940, 77, 41, 15" Text="Node.js" />
+                    <uc:OcrTextInfo Region="983, 77, 11, 12" Text="&amp;" />
+                    <uc:OcrTextInfo Region="996, 77, 21, 12" Text="Ex..." />
+                    <uc:OcrTextInfo Region="1055, 77, 31, 12" Text="What" />
+                    <uc:OcrTextInfo Region="1087, 78, 10, 11" Text="is" />
+                    <uc:OcrTextInfo Region="1099, 77, 39, 12" Text="Docker" />
+                    <uc:OcrTextInfo Region="1139, 77, 24, 12" Text="Co..." />
+                    <uc:OcrTextInfo Region="1203, 77, 32, 12" Text="Gmail" />
+                    <uc:OcrTextInfo Region="1337, 78, 10, 10" Text="&gt;&gt;" />
+                    <uc:OcrTextInfo Region="386, 113, 70, 16" Text="WhatsApp," />
+                    <uc:OcrTextInfo Region="458, 113, 59, 16" Text="Telegram," />
+                    <uc:OcrTextInfo Region="520, 113, 31, 13" Text="LINE" />
+                    <uc:OcrTextInfo Region="553, 113, 24, 13" Text="and" />
+                    <uc:OcrTextInfo Region="579, 113, 52, 13" Text="WeChat" />
+                    <uc:OcrTextInfo Region="633, 113, 74, 16" Text="integrations" />
+                    <uc:OcrTextInfo Region="710, 116, 20, 10" Text="are" />
+                    <uc:OcrTextInfo Region="732, 113, 13, 13" Text="in" />
+                    <uc:OcrTextInfo Region="747, 113, 44, 15" Text="private" />
+                    <uc:OcrTextInfo Region="794, 113, 32, 13" Text="beta." />
+                    <uc:OcrTextInfo Region="828, 113, 51, 15" Text="Request" />
+                    <uc:OcrTextInfo Region="881, 113, 19, 13" Text="for" />
+                    <uc:OcrTextInfo Region="901, 113, 33, 15" Text="early" />
+                    <uc:OcrTextInfo Region="935, 115, 45, 11" Text="access." />
+                    <uc:OcrTextInfo Region="1340, 113, 16, 16" Text="X" />
+                    <uc:OcrTextInfo Region="19, 156, 54, 12" Text="TICKETS" />
+                    <uc:OcrTextInfo Region="106, 156, 19, 12" Text="KB" />
+                    <uc:OcrTextInfo Region="151, 156, 79, 12" Text="CUSTOMERS" />
+                    <uc:OcrTextInfo Region="256, 156, 71, 12" Text="ANALYTICS" />
+                    <uc:OcrTextInfo Region="353, 156, 71, 12" Text="ACTIVITIES" />
+                    <uc:OcrTextInfo Region="450, 156, 84, 12" Text="COMMUNITY" />
+                    <uc:OcrTextInfo Region="560, 156, 48, 12" Text="SOCIAL" />
+                    <uc:OcrTextInfo Region="634, 156, 37, 12" Text="CHAT" />
+                    <uc:OcrTextInfo Region="1031, 155, 77, 16" Text="Moringa-saf" />
+                    <uc:OcrTextInfo Region="1186, 154, 16, 15" Text="+" />
+                    <uc:OcrTextInfo Region="27, 213, 15, 8" Text="0O" />
+                    <uc:OcrTextInfo Region="243, 209, 21, 14" Text="All" />
+                    <uc:OcrTextInfo Region="266, 208, 53, 15" Text="Tickets" />
+                    <uc:OcrTextInfo Region="322, 211, 8, 11" Text="-" />
+                    <uc:OcrTextInfo Region="332, 209, 20, 13" Text="01" />
+                    <uc:OcrTextInfo Region="1194, 207, 25, 12" Text="..." />
+                    <uc:OcrTextInfo Region="26, 221, 17, 8" Text="00" />
+                    <uc:OcrTextInfo Region="26, 232, 19, 12" Text="HQ" />
+                    <uc:OcrTextInfo Region="279, 263, 37, 14" Text="#101" />
+                    <uc:OcrTextInfo Region="327, 262, 46, 15" Text="Here's" />
+                    <uc:OcrTextInfo Region="375, 266, 36, 14" Text="your" />
+                    <uc:OcrTextInfo Region="412, 262, 31, 15" Text="first" />
+                    <uc:OcrTextInfo Region="445, 263, 46, 15" Text="ticket." />
+                    <uc:OcrTextInfo Region="1060, 273, 36, 15" Text="Open" />
+                    <uc:OcrTextInfo Region="1190, 274, 23, 13" Text="CM" />
+                    <uc:OcrTextInfo Region="279, 287, 52, 11" Text="Lawrence" />
+                    <uc:OcrTextInfo Region="337, 289, 6, 9" Text="." />
+                    <uc:OcrTextInfo Region="346, 286, 29, 12" Text="Zoho" />
+                    <uc:OcrTextInfo Region="381, 289, 5, 9" Text="." />
+                    <uc:OcrTextInfo Region="391, 287, 18, 11" Text="©s" />
+                    <uc:OcrTextInfo Region="411, 287, 7, 11" Text="1" />
+                    <uc:OcrTextInfo Region="420, 288, 20, 11" Text="day" />
+                    <uc:OcrTextInfo Region="441, 290, 19, 9" Text="ago" />
+                    <uc:OcrTextInfo Region="466, 290, 5, 9" Text="-" />
+                    <uc:OcrTextInfo Region="476, 288, 11, 10" Text="©" />
+                    <uc:OcrTextInfo Region="488, 287, 52, 11" Text="Tomorrow" />
+                    <uc:OcrTextInfo Region="540, 287, 31, 11" Text="03:36" />
+                    <uc:OcrTextInfo Region="572, 287, 19, 10" Text="AM" />
+                    <uc:OcrTextInfo Region="595, 289, 4, 8" Text="." />
+                    <uc:OcrTextInfo Region="612, 284, 6, 9" Text="1" />
+                    <uc:OcrTextInfo Region="21, 313, 29, 11" Text="Feeds" />
+                    <uc:OcrTextInfo Region="20, 394, 31, 11" Text="Views" />
+                    <uc:OcrTextInfo Region="25, 453, 18, 19" Text="08" />
+                    <uc:OcrTextInfo Region="20, 475, 31, 12" Text="Agent" />
+                    <uc:OcrTextInfo Region="19, 486, 33, 13" Text="Queue" />
+                    <uc:OcrTextInfo Region="23, 543, 22, 19" Text="D&amp;," />
+                    <uc:OcrTextInfo Region="20, 565, 31, 10" Text="Teams" />
+                    <uc:OcrTextInfo Region="19, 577, 34, 12" Text="Queue" />
+                    <uc:OcrTextInfo Region="204, 682, 40, 12" Text="Tickets" />
+                    <uc:OcrTextInfo Region="247, 681, 47, 13" Text="received" />
+                    <uc:OcrTextInfo Region="295, 682, 12, 12" Text="in" />
+                    <uc:OcrTextInfo Region="308, 682, 15, 12" Text="all" />
+                    <uc:OcrTextInfo Region="324, 681, 27, 15" Text="days" />
+                    <uc:OcrTextInfo Region="1105, 682, 29, 13" Text="Total" />
+                    <uc:OcrTextInfo Region="1136, 682, 45, 13" Text="Records" />
+                    <uc:OcrTextInfo Region="1194, 681, 8, 13" Text="1" />
+                    <uc:OcrTextInfo Region="1206, 685, 5, 8" Text="-" />
+                    <uc:OcrTextInfo Region="1213, 681, 8, 13" Text="1" />
+                    <uc:OcrTextInfo Region="270, 708, 27, 11" Text="Here" />
+                    <uc:OcrTextInfo Region="299, 708, 10, 10" Text="is" />
+                    <uc:OcrTextInfo Region="309, 710, 27, 11" Text="your" />
+                    <uc:OcrTextInfo Region="336, 708, 32, 11" Text="Smart" />
+                    <uc:OcrTextInfo Region="370, 707, 27, 12" Text="Chat" />
+                    <uc:OcrTextInfo Region="399, 707, 64, 14" Text="(Ctrl+Space)" />
+                    <uc:OcrTextInfo Region="1176, 710, 20, 10" Text="E:" />
+                    <uc:OcrTextInfo Region="1279, 709, 10, 11" Text="L" />
+                    <uc:OcrTextInfo Region="52, 717, 21, 8" Text="Chats" />
+                    <uc:OcrTextInfo Region="179, 718, 34, 8" Text="Contacts" />
+                  </scg:List>
+                </uc:CVCache.OcrTexts>
+              </uc:CVCache>
+              <uc:CVCache DisplayName="2" Id="72de3151-18bb-49be-9b83-57917fc04954" InformativeScreenshot="f145938605719b1d95f321579a19f954" LogicalPosition="0, 0" OcrText="Moringa-saf X Thursday: RPA Implementation S X + v _ X desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases/new C 0 Home Patrick We... Meet - upj-boym-toy Guides Node.js jQuery Event Meth... MongoDB comman... Dashboard Canvas Using Node.js &amp; Ex... What is Docker Co... Gmail &gt;&gt; TICKETS KB CUSTOMERS ANALYTICS ACTIVITIES COMMUNITY SOCIAL CHAT Moringa-saf + Here is your Smart Chat (Ctrl+Space) E: L Chats Contacts" Position="0, 0" ServerVersion="1">
+                <uc:CVCache.CvAnchorRelations>
+                  <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                </uc:CVCache.CvAnchorRelations>
+                <uc:CVCache.CvUiElements>
+                  <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="128">
+                    <uc:CvElementInfo Category="Button" Region="6, 0, 244, 35" />
+                    <uc:CvElementInfo Category="Icon" Region="1166, 42, 20, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="1236, 41, 23, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="106, 41, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="42, 39, 23, 23" />
+                    <uc:CvElementInfo Category="Icon" Region="741, 73, 20, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1229, 114, 22, 21" />
+                    <uc:CvElementInfo Category="InputBox" Region="141, 37, 1056, 29" />
+                    <uc:CvElementInfo Category="Icon" Region="1139, 114, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1029, 75, 22, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="75, 40, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1134, 42, 21, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="498, 6, 21, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="587, 73, 22, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1273, 113, 23, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1205, 40, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1269, 42, 20, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="10, 40, 22, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="160, 74, 22, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="257, 6, 21, 21" />
+                    <uc:CvElementInfo Category="CloseButton" Region="1333, 4, 20, 19" />
+                    <uc:CvElementInfo Category="MaximizeButton" Region="1287, 4, 19, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="878, 72, 25, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1312, 705, 19, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="18, 6, 20, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="150, 43, 15, 17" />
+                    <uc:CvElementInfo Category="CloseButton" Region="222, 7, 18, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="11, 73, 21, 21" />
+                    <uc:CvElementInfo Category="Button" Region="249, 1, 237, 32" />
+                    <uc:CvElementInfo Category="Icon" Region="1225, 705, 23, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="313, 72, 21, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="1178, 74, 20, 17" />
+                    <uc:CvElementInfo Category="Icon" Region="1342, 704, 21, 20" />
+                    <uc:CvElementInfo Category="Icon" Region="1184, 114, 22, 21" />
+                    <uc:CvElementInfo Category="ArrowButton" Region="1333, 75, 18, 16" />
+                    <uc:CvElementInfo Category="CloseButton" Region="462, 7, 18, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="1273, 705, 21, 21" />
+                    <uc:CvElementInfo Category="Icon" Region="1313, 106, 44, 40" />
+                    <uc:CvElementInfo Category="Icon" Region="1337, 41, 15, 22" />
+                    <uc:CvElementInfo Category="Icon" Region="52, 703, 21, 20" />
+                    <uc:CvElementInfo Category="ArrowButton" Region="1195, 5, 19, 18" />
+                    <uc:CvElementInfo Category="Icon" Region="1173, 707, 27, 17" />
+                    <uc:CvElementInfo Category="Icon" Region="187, 703, 17, 16" />
+                    <uc:CvElementInfo Category="MinimizeButton" Region="1241, 6, 21, 16" />
+                    <uc:CvElementInfo Category="Icon" Region="439, 74, 22, 19" />
+                    <uc:CvElementInfo Category="Icon" Region="1298, 38, 28, 26" />
+                    <uc:CvElementInfo Category="Button" Region="2, 105, 91, 43" />
+                    <uc:CvElementInfo Category="Cell" Region="887, 103, 136, 46" />
+                    <uc:CvElementInfo Category="Cell" Region="1025, 102, 114, 47" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1261, 699, 46, 29" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1213, 699, 49, 29" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1308, 699, 30, 29" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="104, 116, 23, 18" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="0, 156, 1363, 538" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1298, 38, 27, 26" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1159, 700, 53, 28" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="439, 74, 22, 19" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="1338, 700, 28, 28" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1334, 76, 17, 15" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="95, 104, 154, 45" />
+                    <uc:CvElementInfo Category="RadioButton" Confidence="Runtime" Region="314, 73, 20, 21" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="266, 699, 917, 29" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="443, 7, 17, 19" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="12, 73, 20, 19" />
+                    <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="5, 1, 251, 33" />
+                    <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="179, 701, 40, 26" />
+                    <uc:CvElementInfo Category="CloseButton" Confidence="Runtime" Region="257, 6, 20, 21" />
+                    <uc:CvElementInfo Category="CloseButton" Confidence="Runtime" Region="1299, 38, 26, 25" />
+                    <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="213, 78, 12, 13" />
+                    <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="1195, 6, 19, 17" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="450, 102, 110, 49" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="352, 102, 94, 48" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="254, 102, 98, 49" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="557, 104, 72, 46" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1307, 101, 55, 46" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="1136, 103, 30, 46" />
+                    <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="119, 102, 140, 50" />
+                  </scg:List>
+                </uc:CVCache.CvUiElements>
+                <uc:CVCache.OcrTexts>
+                  <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="64">
+                    <uc:OcrTextInfo Region="43, 10, 67, 15" Text="Moringa-saf" />
+                    <uc:OcrTextInfo Region="226, 11, 11, 11" Text="X" />
+                    <uc:OcrTextInfo Region="281, 10, 53, 15" Text="Thursday:" />
+                    <uc:OcrTextInfo Region="336, 10, 22, 12" Text="RPA" />
+                    <uc:OcrTextInfo Region="360, 10, 84, 14" Text="Implementation" />
+                    <uc:OcrTextInfo Region="447, 10, 9, 11" Text="S" />
+                    <uc:OcrTextInfo Region="465, 11, 10, 10" Text="X" />
+                    <uc:OcrTextInfo Region="501, 9, 14, 14" Text="+" />
+                    <uc:OcrTextInfo Region="1198, 8, 13, 10" Text="v" />
+                    <uc:OcrTextInfo Region="1243, 4, 15, 13" Text="_" />
+                    <uc:OcrTextInfo Region="1336, 7, 13, 13" Text="X" />
+                    <uc:OcrTextInfo Region="171, 45, 426, 16" Text="desk.zoho.com/support/moringasaf/ShowHomePage.do#Cases/new" />
+                    <uc:OcrTextInfo Region="1307, 46, 9, 11" Text="C" />
+                    <uc:OcrTextInfo Region="18, 77, 7, 9" Text="0" />
+                    <uc:OcrTextInfo Region="37, 77, 33, 12" Text="Home" />
+                    <uc:OcrTextInfo Region="78, 77, 41, 12" Text="Patrick" />
+                    <uc:OcrTextInfo Region="120, 77, 27, 12" Text="We..." />
+                    <uc:OcrTextInfo Region="187, 77, 30, 12" Text="Meet" />
+                    <uc:OcrTextInfo Region="218, 79, 6, 10" Text="-" />
+                    <uc:OcrTextInfo Region="226, 77, 75, 15" Text="upj-boym-toy" />
+                    <uc:OcrTextInfo Region="340, 77, 39, 13" Text="Guides" />
+                    <uc:OcrTextInfo Region="386, 77, 41, 15" Text="Node.js" />
+                    <uc:OcrTextInfo Region="465, 77, 38, 15" Text="jQuery" />
+                    <uc:OcrTextInfo Region="504, 78, 31, 11" Text="Event" />
+                    <uc:OcrTextInfo Region="537, 77, 37, 12" Text="Meth..." />
+                    <uc:OcrTextInfo Region="614, 77, 54, 15" Text="MongoDB" />
+                    <uc:OcrTextInfo Region="672, 79, 56, 10" Text="comman..." />
+                    <uc:OcrTextInfo Region="767, 77, 59, 12" Text="Dashboard" />
+                    <uc:OcrTextInfo Region="828, 77, 39, 12" Text="Canvas" />
+                    <uc:OcrTextInfo Region="905, 77, 32, 15" Text="Using" />
+                    <uc:OcrTextInfo Region="940, 77, 41, 15" Text="Node.js" />
+                    <uc:OcrTextInfo Region="983, 77, 11, 12" Text="&amp;" />
+                    <uc:OcrTextInfo Region="996, 77, 21, 12" Text="Ex..." />
+                    <uc:OcrTextInfo Region="1055, 77, 31, 12" Text="What" />
+                    <uc:OcrTextInfo Region="1087, 78, 10, 11" Text="is" />
+                    <uc:OcrTextInfo Region="1099, 77, 39, 12" Text="Docker" />
+                    <uc:OcrTextInfo Region="1139, 77, 24, 12" Text="Co..." />
+                    <uc:OcrTextInfo Region="1203, 77, 32, 12" Text="Gmail" />
+                    <uc:OcrTextInfo Region="1337, 78, 10, 10" Text="&gt;&gt;" />
+                    <uc:OcrTextInfo Region="19, 118, 54, 13" Text="TICKETS" />
+                    <uc:OcrTextInfo Region="106, 119, 19, 12" Text="KB" />
+                    <uc:OcrTextInfo Region="151, 119, 80, 12" Text="CUSTOMERS" />
+                    <uc:OcrTextInfo Region="257, 119, 71, 11" Text="ANALYTICS" />
+                    <uc:OcrTextInfo Region="353, 119, 71, 12" Text="ACTIVITIES" />
+                    <uc:OcrTextInfo Region="451, 119, 82, 12" Text="COMMUNITY" />
+                    <uc:OcrTextInfo Region="560, 119, 48, 12" Text="SOCIAL" />
+                    <uc:OcrTextInfo Region="633, 119, 37, 12" Text="CHAT" />
+                    <uc:OcrTextInfo Region="1032, 118, 76, 15" Text="Moringa-saf" />
+                    <uc:OcrTextInfo Region="1186, 118, 16, 15" Text="+" />
+                    <uc:OcrTextInfo Region="270, 707, 27, 12" Text="Here" />
+                    <uc:OcrTextInfo Region="299, 708, 9, 10" Text="is" />
+                    <uc:OcrTextInfo Region="309, 710, 27, 11" Text="your" />
+                    <uc:OcrTextInfo Region="336, 708, 32, 11" Text="Smart" />
+                    <uc:OcrTextInfo Region="370, 708, 27, 11" Text="Chat" />
+                    <uc:OcrTextInfo Region="399, 707, 64, 14" Text="(Ctrl+Space)" />
+                    <uc:OcrTextInfo Region="1176, 710, 20, 10" Text="E:" />
+                    <uc:OcrTextInfo Region="1279, 708, 10, 12" Text="L" />
+                    <uc:OcrTextInfo Region="52, 717, 21, 8" Text="Chats" />
+                    <uc:OcrTextInfo Region="180, 718, 32, 8" Text="Contacts" />
+                  </scg:List>
+                </uc:CVCache.OcrTexts>
+              </uc:CVCache>
+            </scg:List>
+          </uc:CvCacheContainer.Caches>
+        </uc:CvCacheContainer>
+      </p:CVScope.DesignTimeCacheContainer>
+      <p:CVScope.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_1" Image="[Image]" Language="en" Profile="Screen" Scale="1" Timeout="100000" />
+        </ActivityFunc>
+      </p:CVScope.OCREngine>
+      <p:CVScope.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f64daf5e-d3e1-448b-8902-cb17494b37ee" InformativeScreenshot="4862e17ff1baf32431488dfcdd2a8879" Selector="&lt;html app='chrome.exe' title='Moringa-saf' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </p:CVScope.Target>
+      <p:CVScope.UseLocalServer>
+        <InArgument x:TypeArguments="x:Boolean" />
+      </p:CVScope.UseLocalServer>
+    </p:CVScope>
+  </Sequence>
+</Activity>
